@@ -1,0 +1,144 @@
+/* App level styles */
+.App { min-height: 100vh; background: #0d1420; color: #ece5d3; }
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap');
+
+.font-display { font-family: 'Fraunces', 'Playfair Display', Georgia, serif; letter-spacing: -0.02em; }
+.font-body { font-family: 'Inter', system-ui, sans-serif; }
+.font-arabic { font-family: 'Noto Naskh Arabic', serif; direction: rtl; }
+
+/* Palette */
+:root {
+  --ink: #0d1420;
+  --ink-2: #111a29;
+  --ink-3: #182238;
+  --cream: #f4ecdc;
+  --cream-2: #ebe1cc;
+  --green: #1a6b48;
+  --green-hover: #237a55;
+  --amber: #e6a446;
+  --amber-2: #f2b95d;
+  --text: #ece5d3;
+  --muted: #9a9585;
+  --line: rgba(236, 229, 211, 0.08);
+}
+
+body, html { background: var(--ink); }
+
+/* Grid pattern background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(230, 164, 70, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-cream-dots {
+  background-image: radial-gradient(rgba(13,20,32,0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Section top accent line */
+.top-accent { border-top: 1px solid var(--line); }
+
+/* Buttons */
+.btn-green {
+  background: var(--green);
+  color: #fff;
+  padding: 12px 22px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.25s ease, transform 0.25s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-green:hover { background: var(--green-hover); transform: translateY(-1px); }
+
+.btn-outline {
+  border: 1px solid rgba(236, 229, 211, 0.25);
+  color: var(--text);
+  padding: 12px 22px;
+  font-weight: 500;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--amber); background: rgba(230,164,70,0.05); }
+
+.btn-amber {
+  background: var(--amber);
+  color: #1a1408;
+  padding: 12px 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: background 0.25s ease;
+}
+.btn-amber:hover { background: var(--amber-2); }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 40s linear infinite; }
+
+/* Fade up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s ease forwards; }
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.4); }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* Section label */
+.section-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--amber); font-weight: 600;
+}
+.section-tag::before {
+  content: ''; width: 24px; height: 1px; background: var(--amber);
+}
+
+/* Card hover */
+.svc-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.svc-card:hover { transform: translateY(-4px); }
+.svc-card:hover .svc-img { transform: scale(1.05); }
+.svc-img { transition: transform 0.7s ease; }
+
+/* Underline animation for nav */
+.nav-link { position: relative; transition: color 0.25s ease; }
+.nav-link::after {
+  content: ''; position: absolute; left: 0; bottom: -6px;
+  height: 1px; width: 0; background: var(--amber); transition: width 0.3s ease;
+}
+.nav-link:hover { color: var(--amber); }
+.nav-link:hover::after { width: 100%; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a1220; }
+::-webkit-scrollbar-thumb { background: #1a2438; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #263349; }
+
+/* Ken burns */
+@keyframes kenburns {
+  0% { transform: scale(1.05) translate(0,0); }
+  100% { transform: scale(1.15) translate(-2%, -1%); }
+}
+.kenburns { animation: kenburns 20s ease-in-out infinite alternate; }
+
+/* Selection */
+::selection { background: var(--amber); color: #0d1420; }
+
+/* Remove default text-align center */
