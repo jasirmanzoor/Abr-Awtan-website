@@ -1,77 +1,73 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SERVICES } from '../data/mock';
-import { Warehouse, Users, Truck, Bus, ArrowRight } from 'lucide-react';
+import { FileCheck2, Truck, PackageOpen, Bike, Building2, Zap, Warehouse, Users, Bus, ArrowUpRight } from 'lucide-react';
 
-const ICONS = { Warehouse, Users, Truck, Bus };
+const ICONS = { FileCheck2, Truck, PackageOpen, Bike, Building2, Zap, Warehouse, Users, Bus };
+
+function ServiceTile({ s }) {
+  const ref = useRef(null);
+  const Icon = ICONS[s.icon];
+
+  const onMove = (e) => {
+    if (!ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    const mx = ((e.clientX - r.left) / r.width) * 100;
+    const my = ((e.clientY - r.top) / r.height) * 100;
+    ref.current.style.setProperty('--mx', mx + '%');
+    ref.current.style.setProperty('--my', my + '%');
+  };
+
+  return (
+    <a href="#quote" ref={ref} onMouseMove={onMove} className="svc-tile group block p-7 relative min-h-[280px]">
+      <div className="flex items-start justify-between relative z-10">
+        <div className="w-12 h-12 border border-[#f5b840]/30 bg-[#f5b840]/5 flex items-center justify-center transition group-hover:bg-[#f5b840]/10">
+          <Icon size={20} className="text-[#f5b840]" />
+        </div>
+        <div className="font-mono text-[10px] tracking-[0.28em] text-[#7d8391]">/{s.code}</div>
+      </div>
+
+      <div className="relative z-10 mt-8">
+        <h3 className="font-display text-[24px] lg:text-[26px] font-medium text-[#f5efe1] leading-tight tracking-tight">{s.title}</h3>
+        <p className="font-arabic text-[13px] text-[#7d8391] mt-1">{s.ar}</p>
+        <p className="text-[13.5px] text-[#c9c1ab] mt-3 leading-relaxed">{s.desc}</p>
+      </div>
+
+      <div className="absolute bottom-6 left-7 right-7 flex items-center justify-between">
+        <div className="flex flex-wrap gap-1.5">
+          {s.tags.map((t) => (
+            <span key={t} className="font-mono text-[10px] tracking-wider text-[#f5b840]/80 border border-[#f5b840]/25 px-2 py-0.5">{t}</span>
+          ))}
+        </div>
+        <ArrowUpRight size={16} className="text-[#7d8391] group-hover:text-[#f5b840] group-hover:-translate-y-1 group-hover:translate-x-1 transition" />
+      </div>
+    </a>
+  );
+}
 
 export default function Services() {
   return (
-    <section id="services" className="relative bg-[#0d1420] py-28 lg:py-36 overflow-hidden">
-      <div className="absolute inset-0 bg-dots opacity-40" />
+    <section id="services" className="relative bg-[#050810] py-28 lg:py-36 overflow-hidden">
+      <div className="absolute inset-0 bg-dots opacity-30" />
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16">
+        <div className="grid lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-7">
-            <div className="section-tag mb-6">
-              What We Operate
-              <span className="font-arabic text-[13px] tracking-normal text-[#9a9585] normal-case">الخدمات التي نمتلكها ونقدمها</span>
-            </div>
-            <h2 className="font-display text-[42px] lg:text-[64px] leading-[1.02] font-medium tracking-[-0.02em]">
-              Services We <br />
-              <span className="italic">Own &amp; Deliver.</span>
+            <div className="section-tag mb-6">01 · Capability Matrix</div>
+            <h2 className="font-display text-[44px] lg:text-[64px] leading-[1.02] font-medium tracking-[-0.025em] text-[#f5efe1]">
+              Every logistics <br />
+              function, <span className="italic text-amber-grad">one operator.</span>
             </h2>
           </div>
           <div className="lg:col-span-5 flex items-end">
-            <div className="border-l-2 border-[#e6a446] pl-6">
+            <div className="border-l-2 border-[#f5b840] pl-6">
               <p className="text-[16px] text-[#c9c1ab] leading-relaxed">
-                Every service is powered by our own physical infrastructure — not outsourced, not brokered. We build, own, and operate the assets that move your business.
+                Nine core services delivered on infrastructure we own end-to-end. From the port of entry to your customer&rsquo;s doorstep — no brokers, no handoffs, no excuses.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {SERVICES.map((s) => {
-            const Icon = ICONS[s.icon];
-            return (
-              <article key={s.id} className="svc-card group relative overflow-hidden bg-[#111a29] border border-white/5 h-[460px]">
-                <div className="absolute inset-0">
-                  <img src={s.image} alt={s.title} className="svc-img w-full h-full object-cover opacity-55" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1420] via-[#0d1420]/70 to-[#0d1420]/30" />
-                </div>
-
-                <div className="relative h-full flex flex-col justify-between p-8">
-                  <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 bg-[#0d1420]/70 border border-[#e6a446]/30 px-3 py-1.5">
-                      <span className="w-1 h-1 bg-[#e6a446] rounded-full" />
-                      <span className="text-[10px] tracking-[0.24em] uppercase text-[#e6a446] font-semibold">{s.tagline}</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="w-11 h-11 bg-[#e6a446]/15 border border-[#e6a446]/30 flex items-center justify-center mb-5">
-                      <Icon size={20} className="text-[#e6a446]" />
-                    </div>
-                    <h3 className="font-display text-[30px] font-medium leading-tight text-[#f4ecdc]">{s.title}</h3>
-                    <p className="font-arabic text-[14px] text-[#9a9585] mt-1">{s.titleAr}</p>
-                    <p className="text-[14px] text-[#c9c1ab] mt-3 leading-relaxed max-w-md">{s.description}</p>
-
-                    <div className="flex flex-wrap gap-x-5 gap-y-2 mt-5">
-                      {s.bullets.map((b) => (
-                        <div key={b} className="flex items-center gap-2 text-[12px] text-[#d9d2bf]/80">
-                          <span className="w-1 h-1 bg-[#e6a446] rounded-full" />
-                          {b}
-                        </div>
-                      ))}
-                    </div>
-
-                    <a href="#contact" className="inline-flex items-center gap-2 mt-6 text-[12px] tracking-[0.22em] uppercase text-[#f4ecdc] border-b border-[#e6a446]/50 pb-1 hover:border-[#e6a446] transition">
-                      Partner With Us <ArrowRight size={14} />
-                    </a>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {SERVICES.map((s) => <ServiceTile key={s.id} s={s} />)}
         </div>
       </div>
     </section>
