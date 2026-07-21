@@ -43,7 +43,7 @@ export default function AIAssistant() {
       const r = await sendChat(session, q);
       setMsgs((m) => [...m, { role: 'assistant', text: r.reply }]);
     } catch {
-      setMsgs((m) => [...m, { role: 'assistant', text: 'I hit a hiccup reaching the command center. Please retry or WhatsApp us at +966 50 000 0000.' }]);
+      setMsgs((m) => [...m, { role: 'assistant', text: 'I hit a hiccup reaching the command center. Please retry or WhatsApp us at +966 555 324 149.' }]);
     } finally {
       setBusy(false);
     }
@@ -150,7 +150,7 @@ export default function AIAssistant() {
               </div>
               <div className="flex items-center justify-between mt-2 font-mono text-[9px] tracking-[0.22em] uppercase text-[#7d8391]">
                 <span>AI · Answers can be inaccurate</span>
-                <a href="https://wa.me/966500000000" target="_blank" rel="noreferrer" className="text-[#22c55e] hover:underline">• WhatsApp a human</a>
+                <a href="https://wa.me/966555324149" target="_blank" rel="noreferrer" className="text-[#22c55e] hover:underline">• WhatsApp a human</a>
               </div>
             </div>
           </div>

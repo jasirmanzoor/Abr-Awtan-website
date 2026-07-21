@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { MAP_LOCATIONS, ROUTES, HERO_TICKERS, COMPANY_PROFILE_PDF } from '../../data/mock';
 import { ArrowRight, Download, ShieldCheck, Zap, Radio, ChevronDown } from 'lucide-react';
+import { useLang } from '../../context/LangContext';
 
 function FullMap() {
   const loc = (n) => MAP_LOCATIONS.find(l => l.name === n);
@@ -60,7 +61,22 @@ function FullMap() {
   );
 }
 
-function KineticText({ text, delay = 0 }) {
+function KineticText({ text, delay = 0, splitByChar = true }) {
+  // Arabic letters must remain joined for correct ligatures — split by word instead
+  if (!splitByChar) {
+    return (
+      <span className="inline-block">
+        {text.split(' ').map((w, i) => (
+          <motion.span key={i} className="inline-block me-2"
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: delay + i * 0.1, duration: 0.9, ease: [0.2, 0.65, 0.3, 0.9] }}>
+            {w}
+          </motion.span>
+        ))}
+      </span>
+    );
+  }
   return (
     <span className="inline-block">
       {text.split('').map((c, i) => (
@@ -90,6 +106,7 @@ function LiveMetric() {
 
 export default function CinematicHero() {
   const ref = useRef(null);
+  const { t, lang } = useLang();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -129,28 +146,28 @@ export default function CinematicHero() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 w-full pt-24">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.7 }}
             className="inline-flex items-center gap-2 border border-[#f5b840]/40 bg-[#050810]/60 backdrop-blur px-3 py-1.5 font-mono text-[10px] tracking-[0.28em] uppercase text-[#f5b840] mb-8">
-            <span className="w-1.5 h-1.5 bg-[#f5b840] rounded-full pulse-dot" /> The Kingdom's Own Operator
+            <span className="w-1.5 h-1.5 bg-[#f5b840] rounded-full pulse-dot" /> {t('hero.badge')}
           </motion.div>
 
-          <h1 className="font-display text-[52px] sm:text-[76px] lg:text-[112px] leading-[0.92] font-medium text-[#f5efe1] tracking-[-0.035em] max-w-5xl">
-            <div className="overflow-hidden"><KineticText text="Ship anywhere" delay={0.2} /></div>
-            <div className="overflow-hidden"><KineticText text="in Saudi." delay={0.7} /></div>
+          <h1 className={`${lang === 'ar' ? 'font-arabic text-right' : 'font-display'} text-[52px] sm:text-[76px] lg:text-[112px] leading-[0.92] font-medium text-[#f5efe1] tracking-[-0.035em] max-w-5xl`}>
+            <div className="overflow-hidden"><KineticText text={t('hero.title1')} delay={0.2} splitByChar={lang !== 'ar'} /></div>
+            <div className="overflow-hidden"><KineticText text={t('hero.title2')} delay={0.7} splitByChar={lang !== 'ar'} /></div>
             <div className="overflow-hidden">
               <motion.span initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1.2, duration: 1, ease: [0.2, 0.65, 0.3, 0.9] }} className="inline-block italic text-amber-grad">
-                Effortlessly.
+                {t('hero.title3')}
               </motion.span>
             </div>
           </h1>
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6, duration: 0.8 }}
-            className="text-[17px] lg:text-[19px] text-[#c9c1ab] mt-8 leading-[1.6] max-w-xl">
-            End-to-end logistics on infrastructure we <span className="text-[#f5b840]">own and operate</span> — clearance, linehaul, warehousing, fulfillment and last-mile. One partner. Zero brokerage. Full-Kingdom coverage.
+            className={`${lang === 'ar' ? 'text-right font-arabic' : ''} text-[17px] lg:text-[19px] text-[#c9c1ab] mt-8 leading-[1.6] max-w-xl`}>
+            {t('hero.sub')}
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.9, duration: 0.8 }} className="flex flex-wrap gap-3 mt-10">
-            <Link to="/ship-now" className="btn-primary group">Ship a Parcel Now <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></Link>
-            <Link to="/rate-calculator" className="btn-ghost">Get Instant Rate</Link>
-            <a href={COMPANY_PROFILE_PDF} target="_blank" rel="noreferrer" className="btn-ghost text-[12px]"><Download size={14} /> Company Profile</a>
+            <Link to="/ship-now" data-testid="hero-cta-ship" className="btn-primary group">{t('hero.ctaShip')} <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></Link>
+            <Link to="/rate-calculator" data-testid="hero-cta-rate" className="btn-ghost">{t('hero.ctaRate')}</Link>
+            <a href={COMPANY_PROFILE_PDF} target="_blank" rel="noreferrer" data-testid="hero-cta-profile" className="btn-ghost text-[12px]"><Download size={14} /> {t('hero.ctaProfile')}</a>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2, duration: 1 }} className="absolute bottom-10 left-6 lg:left-10 right-6 lg:right-10 flex flex-wrap items-center justify-between gap-4">
@@ -164,7 +181,7 @@ export default function CinematicHero() {
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 2.5 }} className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
             <ChevronDown size={14} className="text-[#f5b840] animate-bounce" />
-            <span className="font-mono text-[9px] tracking-[0.32em] uppercase text-[#7d8391]">Scroll to Explore</span>
+            <span className="font-mono text-[9px] tracking-[0.32em] uppercase text-[#7d8391]">{t('hero.scroll')}</span>
           </motion.div>
         </div>
       </motion.div>

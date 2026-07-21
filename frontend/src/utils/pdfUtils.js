@@ -87,7 +87,7 @@ export function generateQuotePDF(data) {
   doc.setDrawColor(...hex.amber); doc.setLineWidth(0.3);
   doc.line(40, h - 60, w - 40, h - 60);
   doc.setTextColor(...hex.muted); doc.setFontSize(9);
-  doc.text('corporate@abralawtan.sa   •   +966 50 000 0000   •   www.abralawtan.sa', w/2, h - 42, { align: 'center' });
+  doc.text('info@abr-alawtan.com   •   +966 555 324 149   •   www.abrAlawtan.com', w/2, h - 42, { align: 'center' });
   doc.setFontSize(8);
   doc.text('This document is confidential and intended solely for the addressee.', w/2, h - 28, { align: 'center' });
 
@@ -133,10 +133,11 @@ export function generateCompanyProfilePDF() {
 
   doc.setDrawColor(...hex.amber); doc.line(40, h - 60, w - 40, h - 60);
   doc.setTextColor(...hex.muted); doc.setFontSize(9);
-  doc.text('corporate@abralawtan.sa   •   +966 50 000 0000   •   Riyadh, Kingdom of Saudi Arabia', w/2, h - 42, { align: 'center' });
+  doc.text('info@abr-alawtan.com   •   +966 555 324 149   •   Riyadh, Kingdom of Saudi Arabia', w/2, h - 42, { align: 'center' });
   doc.save('AbrAlAwtan-Company-Profile.pdf');
 }
 
 export function newQuoteId() {
   return 'AAW-' + Date.now().toString().slice(-8);
 }
+

@@ -13,27 +13,30 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AIAssistant from "./components/AIAssistant";
 import { Toaster } from "./components/ui/toaster";
+import { LangProvider } from "./context/LangContext";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/fleet" element={<Fleet />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/ship-now" element={<ShipNow />} />
-          <Route path="/track" element={<TrackPage />} />
-          <Route path="/rate-calculator" element={<RateCalculator />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-        </Routes>
-        <AIAssistant />
-      </BrowserRouter>
-      <Toaster />
+      <LangProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/fleet" element={<Fleet />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/ship-now" element={<ShipNow />} />
+            <Route path="/track" element={<TrackPage />} />
+            <Route path="/rate-calculator" element={<RateCalculator />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+          </Routes>
+          <AIAssistant />
+        </BrowserRouter>
+        <Toaster />
+      </LangProvider>
     </div>
   );
 }

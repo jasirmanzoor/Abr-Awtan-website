@@ -66,8 +66,8 @@ export default function Contact() {
 
               <div className="space-y-5">
                 {[
-                  { icon: Phone, label: 'WhatsApp / Phone', value: '+966 50 000 0000', href: CTA_WHATSAPP },
-                  { icon: Mail, label: 'Email', value: 'corporate@abralawtan.sa', href: 'mailto:corporate@abralawtan.sa' },
+                  { icon: Phone, label: 'WhatsApp / Phone', value: '+966 555 324 149', href: CTA_WHATSAPP },
+                  { icon: Mail, label: 'Email', value: 'info@abr-alawtan.com', href: 'mailto:info@abr-alawtan.com' },
                   { icon: MapPin, label: 'Headquarters', value: 'Riyadh, Kingdom of Saudi Arabia' },
                   { icon: Radio, label: 'Operations', value: '24/7 Command Center Live' }
                 ].map((r, i) => (

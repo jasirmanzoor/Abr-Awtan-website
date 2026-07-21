@@ -25,7 +25,7 @@ export default function Leadership() {
                 {/* Photo */}
                 <div className="col-span-2 relative overflow-hidden bg-[#050810]">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#f5b840]/10 to-transparent" />
-                  <img src={l.photo} alt={l.name} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700" />
+                  <img src={l.photo} alt={l.name} style={{ objectPosition: l.photoPosition || 'top' }} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent" />
 
                   {/* Corner accents */}

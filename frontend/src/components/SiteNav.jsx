@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, Radio, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Radio, Phone, ChevronDown, Globe } from 'lucide-react';
+import { useLang } from '../context/LangContext';
 
 const LINKS = [
-  { label: 'Services', to: '/services' },
-  { label: 'Fleet', to: '/fleet' },
-  { label: 'About', to: '/about' },
-  { label: 'Careers', to: '/careers' },
-  { label: 'Blog', to: '/blog' },
-  { label: 'Contact', to: '/contact' }
+  { key: 'nav.services', to: '/services' },
+  { key: 'nav.fleet', to: '/fleet' },
+  { key: 'nav.about', to: '/about' },
+  { key: 'nav.careers', to: '/careers' },
+  { key: 'nav.blog', to: '/blog' },
+  { key: 'nav.contact', to: '/contact' }
 ];
 
 const SHIP_LINKS = [
-  { label: 'Ship Now', to: '/ship-now' },
-  { label: 'Track Shipment', to: '/track' },
-  { label: 'Rate Calculator', to: '/rate-calculator' }
+  { key: 'nav.shipNow', to: '/ship-now' },
+  { key: 'nav.trackShipment', to: '/track' },
+  { key: 'nav.rateCalc', to: '/rate-calculator' }
 ];
 
 export default function SiteNav() {
@@ -22,6 +23,7 @@ export default function SiteNav() {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const loc = useLocation();
+  const { t, lang, toggle } = useLang();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
@@ -38,13 +40,15 @@ export default function SiteNav() {
           <div className="flex items-center gap-4 text-[#7d8391]">
             <div className="flex items-center gap-2 text-[#22c55e]">
               <span className="w-1.5 h-1.5 bg-[#22c55e] rounded-full pulse-dot" />
-              <span>COMMAND CENTER · LIVE</span>
+              <span>{t('topbar.command')}</span>
             </div>
-            <span className="hidden md:inline">RIYADH · KSA</span>
+            <span className="hidden md:inline">{t('topbar.location')}</span>
           </div>
           <div className="flex items-center gap-4 text-[#7d8391]">
-            <a href="tel:+966500000000" className="hover:text-[#f5b840] transition flex items-center gap-1.5"><Phone size={11} /> +966 50 000 0000</a>
-            <span className="hidden md:inline text-[#f5b840]">EN</span>
+            <a href="tel:+966555324149" className="hover:text-[#f5b840] transition flex items-center gap-1.5"><Phone size={11} /> +966 555 324 149</a>
+            <button onClick={toggle} data-testid="lang-toggle-topbar" aria-label="Toggle language" className="hidden md:inline-flex items-center gap-1 text-[#f5b840] hover:text-[#ede6d4] transition font-mono text-[11px]">
+              <Globe size={11} /> {t('lang.toggle')}
+            </button>
           </div>
         </div>
       </div>
@@ -66,18 +70,18 @@ export default function SiteNav() {
 
           <nav className="hidden lg:flex items-center gap-7">
             {LINKS.map((l) => (
-              <Link key={l.to} to={l.to} className={`nav-link text-[13px] font-medium ${loc.pathname === l.to ? 'text-[#f5b840]' : 'text-[#c9c1ab]'}`}>{l.label}</Link>
+              <Link key={l.to} to={l.to} data-testid={`nav-${l.key.split('.')[1]}`} className={`nav-link text-[13px] font-medium ${loc.pathname === l.to ? 'text-[#f5b840]' : 'text-[#c9c1ab]'}`}>{t(l.key)}</Link>
             ))}
             <div className="relative" onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
               <button className="nav-link text-[13px] font-medium text-[#c9c1ab] flex items-center gap-1">
-                Ship &amp; Track <ChevronDown size={13} className={dropdown ? 'rotate-180 transition' : 'transition'} />
+                {t('nav.shipTrack')} <ChevronDown size={13} className={dropdown ? 'rotate-180 transition' : 'transition'} />
               </button>
               {dropdown && (
                 <div className="absolute top-full left-0 pt-3">
                   <div className="glass-strong min-w-[220px] p-2">
                     {SHIP_LINKS.map((s) => (
-                      <Link key={s.to} to={s.to} className="block px-4 py-3 text-[13px] text-[#c9c1ab] hover:bg-[#f5b840]/10 hover:text-[#f5b840] transition">
-                        {s.label}
+                      <Link key={s.to} to={s.to} data-testid={`nav-${s.key.split('.')[1]}`} className="block px-4 py-3 text-[13px] text-[#c9c1ab] hover:bg-[#f5b840]/10 hover:text-[#f5b840] transition">
+                        {t(s.key)}
                       </Link>
                     ))}
                   </div>
@@ -87,20 +91,21 @@ export default function SiteNav() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/track" className="btn-ghost text-[12px] py-2.5 px-4"><Radio size={14} /> Track</Link>
-            <Link to="/ship-now" className="btn-primary text-[12px] py-2.5 px-4">Ship Now <ArrowUpRight size={14} /></Link>
+            <Link to="/track" data-testid="btn-track-header" className="btn-ghost text-[12px] py-2.5 px-4"><Radio size={14} /> {t('nav.track')}</Link>
+            <Link to="/ship-now" data-testid="btn-shipnow-header" className="btn-primary text-[12px] py-2.5 px-4">{t('nav.shipNow')} <ArrowUpRight size={14} /></Link>
           </div>
 
-          <button className="lg:hidden text-[#ede6d4]" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
+          <button className="lg:hidden text-[#ede6d4]" onClick={() => setOpen(!open)} data-testid="mobile-menu-toggle">{open ? <X size={22} /> : <Menu size={22} />}</button>
         </div>
 
         {open && (
           <div className="lg:hidden bg-[#050810] border-t border-white/5 px-6 py-6">
             <div className="flex flex-col gap-3">
               {[...LINKS, ...SHIP_LINKS].map((l) => (
-                <Link key={l.to} to={l.to} className="text-[14px] text-[#c9c1ab] py-2 border-b border-white/5">{l.label}</Link>
+                <Link key={l.to} to={l.to} className="text-[14px] text-[#c9c1ab] py-2 border-b border-white/5">{t(l.key)}</Link>
               ))}
-              <Link to="/ship-now" className="btn-primary text-[12px] w-fit mt-3">Ship Now <ArrowUpRight size={14} /></Link>
+              <button onClick={toggle} data-testid="lang-toggle-mobile" className="flex items-center gap-2 text-[13px] text-[#f5b840] py-2 mt-1"><Globe size={14} /> {lang === 'en' ? 'العربية' : 'English'}</button>
+              <Link to="/ship-now" className="btn-primary text-[12px] w-fit mt-3">{t('nav.shipNow')} <ArrowUpRight size={14} /></Link>
             </div>
           </div>
         )}

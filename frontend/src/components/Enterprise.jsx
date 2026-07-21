@@ -4,11 +4,13 @@ import { generateCompanyProfilePDF } from '../utils/pdfUtils';
 
 const BULLETS = [
   'Owned warehouse network',
-  'Remote region dominance',
+  'Remote region dominance — 15+ areas',
   'ZATCA + FASAH compliant',
   'B2B & B2C dedicated ops',
-  '150+ heavy & light vehicles',
-  '500+ direct employees'
+  '150+ own salary drivers',
+  '50+ own big vans',
+  '250+ trained manpower',
+  '100k+ parcels processed monthly'
 ];
 
 export default function Enterprise() {

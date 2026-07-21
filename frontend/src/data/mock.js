@@ -10,11 +10,12 @@ export const NAV_LINKS = [
 ];
 
 export const HERO_TICKERS = [
-  { label: 'Active Shipments', value: 12847 },
-  { label: 'On-Route Vehicles', value: 138 },
-  { label: 'Warehouses Online', value: 9 },
-  { label: 'SLA This Hour', value: 99.7, suffix: '%' },
-  { label: 'Avg Dispatch', value: 42, suffix: 'min' }
+  { label: 'Parcels This Month', value: 100000, suffix: '+' },
+  { label: 'Own Salary Drivers', value: 150, suffix: '+' },
+  { label: 'Own Big Vans', value: 50, suffix: '+' },
+  { label: 'Trained Manpower', value: 250, suffix: '+' },
+  { label: 'Lifetime Deliveries', value: 6, suffix: 'M+' },
+  { label: 'SLA This Hour', value: 99.4, suffix: '%' }
 ];
 
 export const SERVICES = [
@@ -42,25 +43,25 @@ export const COMPARISON = [
 
 export const CASES = [
   {
-    tag: 'E-Commerce',
-    title: '3M+ parcels for a global marketplace',
-    metric: '99.4% SLA',
-    body: 'Onboarded a top-3 marketplace and scaled from 40k to 260k monthly parcels across 25 cities in 90 days with zero downtime.',
+    tag: 'Global Partner · 2016',
+    title: 'Aramex — First flagship partnership',
+    metric: '9-Year Partnership',
+    body: 'Signed our first flagship logistics partnership with Aramex in 2016 — the foundation that turned Abr Al Awtan into a trusted last-mile operator across the Kingdom.',
     image: 'https://images.pexels.com/photos/4487363/pexels-photo-4487363.jpeg'
   },
   {
-    tag: 'Government',
-    title: 'National ministry supply-chain rollout',
-    metric: '18 regions',
-    body: 'Deployed climate-controlled linehaul + bonded storage for a ministry-grade national distribution program with full ZATCA compliance.',
-    image: 'https://images.pexels.com/photos/5410923/pexels-photo-5410923.jpeg'
+    tag: 'E-Commerce · 2023',
+    title: 'iMile — Kingdom-wide last-mile',
+    metric: '100k+ / month',
+    body: 'Agreement signed Q3 2023 and re-scaled in 2025 for last-mile delivery services — currently processing over 100,000 parcels per month across all major KSA cities.',
+    image: 'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg'
   },
   {
-    tag: 'Retail',
-    title: 'Fashion retailer omnichannel fulfillment',
-    metric: '24h D2C',
-    body: 'Integrated Salla + physical stores into a single-inventory pool, enabling 24-hour direct-to-customer nationwide fulfillment.',
-    image: 'https://images.unsplash.com/photo-1616432043562-3671ea2e5242'
+    tag: 'CSP · 2025',
+    title: 'JDL — Last-mile on CSP model',
+    metric: 'Q3 2025 Live',
+    body: 'Onboarded JDL on a Contracted Service Provider (CSP) model in Q3 2025 — dedicated fleet, dedicated riders, integrated warehouse networking end-to-end.',
+    image: 'https://images.pexels.com/photos/5410923/pexels-photo-5410923.jpeg'
   }
 ];
 
@@ -142,12 +143,14 @@ export const PARTNERS = [
 export const LEADERS = [
   { name: 'Malek Al-Sihani', nameAr: 'مالك السهيني', role: 'Founder & CEO', location: 'Riyadh, KSA',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/msijincm_IMG_6031.jpeg',
+    photoPosition: 'right top',
     quote: 'Own the assets. Employ the people. Control the quality. Everything else is theatre.',
     bio: 'Saudi-rooted founder with a vision for true logistics ownership. Builds infrastructure that others rent.' },
   { name: 'Jasir Manzoor', nameAr: 'جاسر منظور', role: 'Managing Director — Operations', location: 'Multi-Regional · KSA',
-    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/lgailf14_IMG_6037.webp',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/lryz2ia6_IMG_6033.jpeg',
+    photoPosition: 'center top',
     quote: 'Excellence isn\u2019t promised. It\u2019s executed \u2014 every parcel, every lane, every hour.',
-    bio: 'Turns strategy into daily execution across the Kingdom. 500+ direct employees, 150+ vehicles, 25+ cities.' }
+    bio: 'Turns strategy into daily execution across the Kingdom. 250+ direct employees, 150+ own drivers, 50+ owned vans, 23+ cities.' }
 ];
 
 export const COMPANY_PROFILE_PDF = 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/kaum80i3_Abral%20awtan%20profile%20.pdf';
@@ -172,4 +175,46 @@ export const TRACK_STAGES = [
 ];
 
 export const HERO_IMAGE = 'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg';
-export const CTA_WHATSAPP = 'https://wa.me/966500000000';
+export const CTA_WHATSAPP = 'https://wa.me/966555324149';
+
+export const COMPANY_CONTACT = {
+  email: 'info@abr-alawtan.com',
+  website: 'www.abrAlawtan.com',
+  phones: ['+966 555 324 149', '+966 536 708 287'],
+  address: 'Riyadh, Kingdom of Saudi Arabia'
+};
+
+// Vision & Mission — verbatim from company profile
+export const COMPANY_STORY = {
+  mission: 'Reliable and cost-effective parcel delivery throughout Saudi Arabia — empowering individuals, online sellers, and emerging businesses with a seamless local shipping experience.',
+  vision: 'To be the leading logistics broker in the Kingdom, offering smart, scalable, and secure shipping solutions built on excellence, innovation, and a truly customer-centric operating model.',
+  founded: 'Riyadh, KSA'
+};
+
+// Full leadership roster from company profile
+export const FULL_TEAM = [
+  { name: 'Malek Al-Sihani', role: 'Founder & CEO' },
+  { name: 'Turki Al Otaibi', role: 'General Manager' },
+  { name: 'Mohammed Dhaifullah', role: 'Department Head' },
+  { name: 'Abdullah Al Sihani', role: 'Human Resources' },
+  { name: 'Ahmed Shaiba', role: 'Projects & Development' },
+  { name: 'Meshaal Obaid', role: 'Partner Relations' },
+  { name: 'Turki Al Rowgi', role: 'Operations' },
+  { name: 'Fahed Ghibaiwy', role: 'Finance Manager' },
+  { name: 'Ayad Mutlaq', role: 'Customer Service' },
+  { name: 'Hitham Nasr', role: 'Control' },
+  { name: 'M. Al Kerdawi', role: 'Accountant' },
+  { name: 'Khader', role: 'Ground Operation' },
+  { name: 'Abdullah Fahad', role: 'Outlets Supervisor' },
+  { name: 'Mir Salman', role: 'External Supervisor' }
+];
+
+// Company milestones from PDF
+export const MILESTONES = [
+  { year: '2016', title: 'Founded in Riyadh', detail: 'First flagship partnership signed with Aramex.' },
+  { year: '2017–2021', title: 'Expansion from 3 → 20 cities', detail: 'Coverage grew to include major KSA urban markets.' },
+  { year: '2022', title: '50,000 parcels/month', detail: 'Scaled monthly volume beyond the 50k threshold.' },
+  { year: '2023', title: 'iMile agreement · 23 cities', detail: 'Signed Q3 2023 iMile partnership. Coverage across 23 KSA cities.' },
+  { year: '2024', title: 'Fleet diversification', detail: 'Fleet mix expanded from trucks to motorcycles. 15 remote areas onboarded.' },
+  { year: '2025', title: 'JDL partnership · 100k+/mo', detail: 'CSP model with JDL live in Q3. Now processing 100,000+ parcels per month.' }
+];

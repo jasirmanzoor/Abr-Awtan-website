@@ -20,7 +20,11 @@ export default function TrackPage() {
     finally { setLoading(false); }
   };
 
-  useEffect(() => { if (params.get('id')) track(params.get('id')); }, []);
+  const urlId = params.get('id');
+
+  useEffect(() => {
+    if (urlId) track(urlId);
+  }, [urlId]);
 
   const submit = (e) => { e.preventDefault(); if (id) track(id); };
 

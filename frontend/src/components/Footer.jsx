@@ -40,7 +40,7 @@ export default function Footer() {
                 <Phone size={13} className="text-[#f5b840]" /> +966 11 XXX XXXX
               </div>
               <div className="flex items-center gap-3 text-[13px] text-[#c9c1ab]">
-                <Mail size={13} className="text-[#f5b840]" /> corporate@abralawtan.sa
+                <Mail size={13} className="text-[#f5b840]" /> info@abr-alawtan.com
               </div>
             </div>
           </div>

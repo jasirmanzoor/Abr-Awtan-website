@@ -26,7 +26,7 @@ export default function Navbar() {
             <span className="hidden md:inline">{new Date().toLocaleDateString('en-GB')}</span>
           </div>
           <div className="flex items-center gap-4 text-[#7d8391]">
-            <a href={CTA_WHATSAPP} target="_blank" rel="noreferrer" className="hover:text-[#f5b840] transition">+966 50 000 0000</a>
+            <a href={CTA_WHATSAPP} target="_blank" rel="noreferrer" className="hover:text-[#f5b840] transition">+966 555 324 149</a>
             <span className="hidden md:inline text-[#f5b840]">EN / عربي</span>
           </div>
         </div>

@@ -75,8 +75,9 @@ export default function Contact() {
               <div className="flex items-center gap-2 mb-6"><Radio size={16} className="text-[#f5b840]" /><div className="font-mono text-[11px] tracking-[0.28em] uppercase text-[#f5b840] font-semibold">Command Center</div></div>
               <div className="space-y-5">
                 {[
-                  { icon: Phone, label: 'WhatsApp / Phone', value: '+966 50 000 0000', href: 'https://wa.me/966500000000' },
-                  { icon: Mail, label: 'Email', value: 'corporate@abralawtan.sa', href: 'mailto:corporate@abralawtan.sa' },
+                  { icon: Phone, label: 'WhatsApp / Phone', value: '+966 555 324 149', href: 'https://wa.me/966555324149' },
+                  { icon: Phone, label: 'Direct Line', value: '+966 536 708 287', href: 'tel:+966536708287' },
+                  { icon: Mail, label: 'Email', value: 'info@abr-alawtan.com', href: 'mailto:info@abr-alawtan.com' },
                   { icon: MapPin, label: 'Headquarters', value: 'Riyadh, Kingdom of Saudi Arabia' },
                   { icon: Radio, label: 'Operations', value: '24/7 Command Center Live' }
                 ].map((r, i) => (
@@ -89,7 +90,7 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
-              <a href="https://wa.me/966500000000" target="_blank" rel="noreferrer" className="btn-primary w-full justify-center mt-7"><MessageCircle size={16} /> Chat on WhatsApp</a>
+              <a href="https://wa.me/966555324149" target="_blank" rel="noreferrer" className="btn-primary w-full justify-center mt-7"><MessageCircle size={16} /> Chat on WhatsApp</a>
             </div>
 
             <div className="border border-[#f5b840]/30 bg-[#f5b840]/5 p-6">
