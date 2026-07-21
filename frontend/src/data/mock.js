@@ -127,18 +127,30 @@ export const REGIONS = [
 export const PARTNERS = [
   { name: 'Aramex', logo: 'ARAMEX' },
   { name: 'iMile', logo: 'iMile' },
+  { name: 'AJEX', logo: 'AJEX.' },
+  { name: 'Keeta', logo: 'Keeta' },
+  { name: 'Logistiq', logo: 'Logistiq' },
+  { name: 'Naqel Express', logo: 'Naqel' },
+  { name: 'J&T Express', logo: 'J&T' },
   { name: 'Aymakan', logo: 'aymakan' },
   { name: 'Zajil', logo: 'ZAJIL' },
   { name: 'SMSA', logo: 'SMSA' },
-  { name: 'Naqel', logo: 'Naqel' },
   { name: 'Salla', logo: 'salla' },
   { name: 'Zid', logo: 'Zid' }
 ];
 
 export const LEADERS = [
-  { name: 'Malik Al-Sihani', nameAr: 'مالك السهيني', role: 'Founder & CEO', location: 'Riyadh', quote: 'Own the assets. Employ the people. Control the quality. Everything else is theatre.' },
-  { name: 'Jasir Manzoor', nameAr: 'جاسر منظور', role: 'Managing Director — Operations', location: 'Multi-Regional', quote: 'Excellence isn’t promised. It’s executed — every parcel, every lane, every hour.' }
+  { name: 'Malek Al-Sihani', nameAr: 'مالك السهيني', role: 'Founder & CEO', location: 'Riyadh, KSA',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/msijincm_IMG_6031.jpeg',
+    quote: 'Own the assets. Employ the people. Control the quality. Everything else is theatre.',
+    bio: 'Saudi-rooted founder with a vision for true logistics ownership. Builds infrastructure that others rent.' },
+  { name: 'Jasir Manzoor', nameAr: 'جاسر منظور', role: 'Managing Director — Operations', location: 'Multi-Regional · KSA',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/lgailf14_IMG_6037.webp',
+    quote: 'Excellence isn\u2019t promised. It\u2019s executed \u2014 every parcel, every lane, every hour.',
+    bio: 'Turns strategy into daily execution across the Kingdom. 500+ direct employees, 150+ vehicles, 25+ cities.' }
 ];
+
+export const COMPANY_PROFILE_PDF = 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/kaum80i3_Abral%20awtan%20profile%20.pdf';
 
 export const ADVANTAGES = [
   { icon: 'ShieldCheck', title: 'ZATCA & FASAH Compliant', desc: 'Fully licensed operator across every regulatory layer of Saudi logistics.' },
