@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SERVICES, CTA_WHATSAPP } from '../data/mock';
 import { generateQuotePDF, newQuoteId } from '../utils/pdfUtils';
+import { submitQuote } from '../lib/api';
 import { ArrowRight, ArrowLeft, Check, Download, MessageCircle, FileText, Sparkles, Loader2, CheckCircle2 } from 'lucide-react';
 
 const STEPS = ['Services', 'Volume', 'Regions', 'Contact', 'Review'];
@@ -35,16 +36,21 @@ export default function QuoteWizard() {
 
   const submit = () => {
     setLoading(true);
-    setTimeout(() => {
-      const id = newQuoteId();
-      setQuoteId(id);
-      setLoading(false);
-      setDone(true);
-      try {
-        const stored = JSON.parse(localStorage.getItem('aaw_quotes') || '[]');
-        localStorage.setItem('aaw_quotes', JSON.stringify([{ id, ...data, ts: Date.now() }, ...stored]));
-      } catch {}
-    }, 2200);
+    submitQuote(data)
+      .then((r) => {
+        setQuoteId(r.id);
+        setDone(true);
+        try {
+          const stored = JSON.parse(localStorage.getItem('aaw_quotes') || '[]');
+          localStorage.setItem('aaw_quotes', JSON.stringify([{ id: r.id, ...data, ts: Date.now() }, ...stored]));
+        } catch {}
+      })
+      .catch(() => {
+        const id = newQuoteId();
+        setQuoteId(id);
+        setDone(true);
+      })
+      .finally(() => setLoading(false));
   };
 
   const downloadPDF = () => generateQuotePDF({ id: quoteId, ...data });

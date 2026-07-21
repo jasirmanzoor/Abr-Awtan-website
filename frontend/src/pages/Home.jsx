@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import SiteNav from '../components/SiteNav';
 import Hero from '../components/Hero';
 import CommandCenter from '../components/CommandCenter';
-import Services from '../components/Services';
+import ServicesGrid from '../components/Services';
 import QuoteWizard from '../components/QuoteWizard';
 import ServiceComparison from '../components/ServiceComparison';
 import Coverage from '../components/Coverage';
@@ -14,17 +14,15 @@ import Testimonials from '../components/Testimonials';
 import Enterprise from '../components/Enterprise';
 import Leadership from '../components/Leadership';
 import Advantage from '../components/Advantage';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import FloatingCTA from '../components/FloatingCTA';
+import SiteFooter from '../components/SiteFooter';
 
 export default function Home() {
   return (
     <div className="font-body">
-      <Navbar />
+      <SiteNav />
       <Hero />
       <CommandCenter />
-      <Services />
+      <ServicesGrid />
       <QuoteWizard />
       <ServiceComparison />
       <Coverage />
@@ -36,9 +34,7 @@ export default function Home() {
       <Enterprise />
       <Leadership />
       <Advantage />
-      <Contact />
-      <Footer />
-      <FloatingCTA />
+      <SiteFooter />
     </div>
   );
 }
