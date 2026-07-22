@@ -4,7 +4,8 @@ import SiteFooter from '../components/SiteFooter';
 import PageHeader from '../components/PageHeader';
 import { createShipment } from '../lib/api';
 import { toast } from '../hooks/use-toast';
-import { Package, ArrowRight, ArrowLeft, Loader2, CheckCircle2, Copy, Search } from 'lucide-react';
+import { CTA_WHATSAPP } from '../data/mock';
+import { Package, ArrowRight, ArrowLeft, Loader2, CheckCircle2, Copy, Search, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CITIES = ['Riyadh','Jeddah','Makkah','Madinah','Dammam','Al Kharj','Buraydah','Hail','Tabuk','Yanbu','Abha','Jazan','Al Ula','Jubail','Sakaka','Rafha','Najran','Taif','Hafer al Batin','Ar Rass','Marat'];
@@ -59,6 +60,11 @@ export default function ShipNow() {
               </div>
               <div className="flex flex-wrap justify-center gap-3 mt-8">
                 <Link to={`/track?id=${result.tracking_id}`} className="btn-primary"><Search size={14} /> Track Now</Link>
+                <a
+                  href={`${CTA_WHATSAPP}?text=${encodeURIComponent(`*New Shipment* · Ref ${result.tracking_id}\n\nFrom: ${f.sender_name} (${f.sender_city}) · ${f.sender_phone}\nTo: ${f.recipient_name} (${f.recipient_city}) · ${f.recipient_phone}\nService: ${f.service_level.replace('_',' ')} · ${f.package_type} · ${f.weight_kg}kg\nPayment: ${f.payment_mode === 'cod' ? `COD SAR ${f.cod_amount}` : 'Prepaid'}\n\nPlease confirm pickup schedule.`)}`}
+                  target="_blank" rel="noreferrer" data-testid="ship-whatsapp-btn" className="btn-ghost">
+                  <MessageCircle size={14} /> WhatsApp Ops
+                </a>
                 <button onClick={() => { setResult(null); setStep(0); }} className="btn-ghost">Create Another</button>
               </div>
             </div>

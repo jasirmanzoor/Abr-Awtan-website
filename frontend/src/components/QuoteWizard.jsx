@@ -34,6 +34,27 @@ export default function QuoteWizard() {
     return true;
   };
 
+  const buildWhatsAppUrl = (id) => {
+    const svc = data.services.length ? data.services.join(', ') : '—';
+    const lines = [
+      `*New Quote Request · Ref ${id}*`,
+      '',
+      `*Company:* ${data.company}`,
+      `*Contact:* ${data.contact}`,
+      `*Email:* ${data.email}`,
+      `*Phone:* ${data.phone}`,
+      '',
+      `*Services:* ${svc}`,
+      `*Monthly Volume:* ${data.volume || '—'}`,
+      `*Timeline:* ${data.timeline || '—'}`,
+      `*Regions:* ${data.regions || '—'}`,
+      data.notes ? `*Notes:* ${data.notes}` : null,
+      '',
+      'Please share the commercial proposal.'
+    ].filter(Boolean).join('\n');
+    return `${CTA_WHATSAPP}?text=${encodeURIComponent(lines)}`;
+  };
+
   const submit = () => {
     setLoading(true);
     submitQuote(data)
@@ -43,12 +64,17 @@ export default function QuoteWizard() {
         try {
           const stored = JSON.parse(localStorage.getItem('aaw_quotes') || '[]');
           localStorage.setItem('aaw_quotes', JSON.stringify([{ id: r.id, ...data, ts: Date.now() }, ...stored]));
-        } catch {}
+        } catch {
+          // localStorage may be unavailable in some contexts — non-critical
+        }
+        // Auto-open WhatsApp with the full quote details
+        try { window.open(buildWhatsAppUrl(r.id), '_blank', 'noopener'); } catch { /* popup blocked */ }
       })
       .catch(() => {
         const id = newQuoteId();
         setQuoteId(id);
         setDone(true);
+        try { window.open(buildWhatsAppUrl(id), '_blank', 'noopener'); } catch { /* popup blocked */ }
       })
       .finally(() => setLoading(false));
   };
@@ -217,15 +243,15 @@ export default function QuoteWizard() {
             <div className="w-16 h-16 mx-auto border-2 border-[#22c55e] flex items-center justify-center bg-[#22c55e]/10">
               <CheckCircle2 size={28} className="text-[#22c55e]" />
             </div>
-            <h3 className="font-display text-[36px] font-medium text-[#f5efe1] mt-6">Request logged with Command Center.</h3>
+            <h3 className="font-display text-[36px] font-medium text-[#f5efe1] mt-6">Request sent to our Operations Director.</h3>
             <p className="text-[15px] text-[#c9c1ab] mt-4 max-w-xl mx-auto">
-              Your reference is <span className="font-mono text-[#f5b840]">{quoteId}</span>. Our operations directors will deliver a full commercial proposal within 24 hours. Download the branded receipt below.
+              Your reference is <span className="font-mono text-[#f5b840]">{quoteId}</span>. We&rsquo;ve opened WhatsApp with your full request — send it to Jasir Manzoor and he&rsquo;ll respond within a few hours with a commercial proposal.
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <button onClick={downloadPDF} className="btn-primary"><Download size={14} /> Download Quote PDF</button>
-              <a href={`${CTA_WHATSAPP}?text=Ref%20${quoteId}%20-%20I%20submitted%20a%20quote%20request.`} target="_blank" rel="noreferrer" className="btn-ghost"><MessageCircle size={14} /> Continue on WhatsApp</a>
-              <button onClick={reset} className="btn-ghost"><FileText size={14} /> New Request</button>
+              <a href={buildWhatsAppUrl(quoteId)} target="_blank" rel="noreferrer" data-testid="quote-whatsapp-btn" className="btn-primary"><MessageCircle size={14} /> Open WhatsApp Chat</a>
+              <button onClick={downloadPDF} data-testid="quote-pdf-btn" className="btn-ghost"><Download size={14} /> Download Quote PDF</button>
+              <button onClick={reset} data-testid="quote-new-btn" className="btn-ghost"><FileText size={14} /> New Request</button>
             </div>
           </div>
         )}

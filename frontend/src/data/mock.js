@@ -141,12 +141,12 @@ export const PARTNERS = [
 ];
 
 export const LEADERS = [
-  { name: 'Malek Al-Sihani', nameAr: 'مالك السهيني', role: 'Founder & CEO', location: 'Riyadh, KSA',
+  { name: 'Malik Al Otaibi', nameAr: 'مالك العتيبي', role: 'Founder & CEO', location: 'Riyadh, KSA',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/msijincm_IMG_6031.jpeg',
     photoPosition: 'right top',
     quote: 'Own the assets. Employ the people. Control the quality. Everything else is theatre.',
     bio: 'Saudi-rooted founder with a vision for true logistics ownership. Builds infrastructure that others rent.' },
-  { name: 'Jasir Manzoor', nameAr: 'جاسر منظور', role: 'Managing Director — Operations', location: 'Multi-Regional · KSA',
+  { name: 'Jasir Manzoor', nameAr: 'جاسر منظور', role: 'Country Operations Director', location: 'Multi-Regional · KSA',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_delivery-nexus-42/artifacts/lryz2ia6_IMG_6033.jpeg',
     photoPosition: 'center top',
     quote: 'Excellence isn\u2019t promised. It\u2019s executed \u2014 every parcel, every lane, every hour.',
@@ -175,7 +175,9 @@ export const TRACK_STAGES = [
 ];
 
 export const HERO_IMAGE = 'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg';
-export const CTA_WHATSAPP = 'https://wa.me/966555324149';
+// All quote / WhatsApp CTAs route to the Country Operations Director (Jasir Manzoor)
+export const CTA_WHATSAPP = 'https://wa.me/966578061556';
+export const OPS_WHATSAPP_LABEL = '+966 57 806 1556';
 
 export const COMPANY_CONTACT = {
   email: 'info@abr-alawtan.com',
@@ -193,7 +195,8 @@ export const COMPANY_STORY = {
 
 // Full leadership roster from company profile
 export const FULL_TEAM = [
-  { name: 'Malek Al-Sihani', role: 'Founder & CEO' },
+  { name: 'Malik Al Otaibi', role: 'Founder & CEO' },
+  { name: 'Jasir Manzoor', role: 'Country Operations Director' },
   { name: 'Turki Al Otaibi', role: 'General Manager' },
   { name: 'Mohammed Dhaifullah', role: 'Department Head' },
   { name: 'Abdullah Al Sihani', role: 'Human Resources' },
