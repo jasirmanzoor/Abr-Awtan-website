@@ -5,6 +5,7 @@ import CommandCenterCinematic from '../components/cinematic/CommandCenterCinemat
 import ScrollStory from '../components/cinematic/ScrollStory';
 import FleetCarousel from '../components/cinematic/FleetCarousel';
 import StickyComparison from '../components/cinematic/StickyComparison';
+import FulfillmentSpotlight from '../components/FulfillmentSpotlight';
 import GrowWithUs from '../components/GrowWithUs';
 import Coverage from '../components/Coverage';
 import CaseStudies from '../components/CaseStudies';
@@ -21,6 +22,7 @@ export default function Home() {
     <div className="font-body">
       <SiteNav />
       <CinematicHero />
+      <FulfillmentSpotlight />
       <CommandCenterCinematic />
       <ScrollStory />
       <FleetCarousel />
