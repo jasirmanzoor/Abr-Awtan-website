@@ -1,0 +1,20 @@
+# robots.txt for https://abralawtan.com
+# Allow all crawlers on all pages
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Explicitly welcome major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Sitemap: https://abralawtan.com/sitemap.xml
