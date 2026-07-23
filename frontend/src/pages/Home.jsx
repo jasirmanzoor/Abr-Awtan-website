@@ -5,6 +5,7 @@ import CommandCenterCinematic from '../components/cinematic/CommandCenterCinemat
 import ScrollStory from '../components/cinematic/ScrollStory';
 import FleetCarousel from '../components/cinematic/FleetCarousel';
 import StickyComparison from '../components/cinematic/StickyComparison';
+import GrowWithUs from '../components/GrowWithUs';
 import Coverage from '../components/Coverage';
 import CaseStudies from '../components/CaseStudies';
 import Partners from '../components/Partners';
@@ -24,6 +25,7 @@ export default function Home() {
       <ScrollStory />
       <FleetCarousel />
       <StickyComparison />
+      <GrowWithUs />
       <Coverage />
       <CaseStudies />
       <Partners />
