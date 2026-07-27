@@ -7,32 +7,32 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0d1420;
-  color: #ece5d3;
+  background: #F7FAF8;
+  color: #0A1F14;
 }
 
 @layer base {
   :root {
-    --background: 220 30% 8%;
-    --foreground: 42 40% 88%;
-    --card: 220 30% 10%;
-    --card-foreground: 42 40% 88%;
-    --popover: 220 30% 10%;
-    --popover-foreground: 42 40% 88%;
-    --primary: 156 60% 26%;
+    --background: 150 25% 97%;
+    --foreground: 150 40% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 40% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 40% 8%;
+    --primary: 150 100% 21%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 42 40% 88%;
-    --muted: 220 20% 15%;
-    --muted-foreground: 42 10% 60%;
-    --accent: 36 76% 58%;
-    --accent-foreground: 220 30% 10%;
-    --destructive: 0 84% 60%;
+    --secondary: 150 20% 94%;
+    --secondary-foreground: 150 40% 12%;
+    --muted: 150 15% 92%;
+    --muted-foreground: 150 15% 40%;
+    --accent: 42 70% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 98%;
-    --border: 42 20% 88% / 0.08;
-    --input: 220 30% 15%;
-    --ring: 36 76% 58%;
-    --radius: 0.25rem;
+    --border: 150 20% 88%;
+    --input: 150 20% 94%;
+    --ring: 150 100% 21%;
+    --radius: 0.5rem;
   }
 }
 
