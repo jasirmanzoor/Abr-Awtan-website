@@ -11,6 +11,7 @@ import TrackPage from "./pages/TrackPage";
 import RateCalculator from "./pages/RateCalculator";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import ExecutiveDeck from "./pages/ExecutiveDeck";
 import AIAssistant from "./components/AIAssistant";
 import { Toaster } from "./components/ui/toaster";
 import { LangProvider } from "./context/LangContext";
@@ -22,6 +23,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/deck" element={<ExecutiveDeck />} />
+            <Route path="/executive" element={<ExecutiveDeck />} />
             <Route path="/services" element={<Services />} />
             <Route path="/fleet" element={<Fleet />} />
             <Route path="/about" element={<About />} />
