@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, Truck, Package, MapPin, CheckCircle2, ArrowRight, 
-  Lock, FileCheck, Radio
+  Lock, FileCheck
 } from 'lucide-react';
 import { calculateROI } from '../lib/roiEngine';
 import { startLivePolling } from '../lib/liveMetrics';
+import KSAExpansionSection from '../components/cinematic/KSAExpansionSection';
 
 /* ═══════════════════════════════════════════════════════════
    ABR AL AWTAN — EXECUTIVE DARK COMMAND CENTER
-   Dual-purpose: Public Website + C-Suite Presentation Deck
+   KSA-focused · Dual-purpose Website + C-Suite Deck
    ═══════════════════════════════════════════════════════════ */
 
 const HERO_METRICS = [
@@ -23,7 +24,7 @@ const PARTNERS = ['Aramex', 'iMile', 'Landmark Group', 'Tamkeen', 'JDL', 'Govern
 
 const SERVICES = [
   { id: '01', title: 'BORDER', ar: 'التخليص الجمركي', subtitle: 'Customs Clearance', desc: 'Fasah / ZATCA pre-clearance. Zero port dwell times. Full regulatory ownership.', icon: FileCheck, points: ['Fasah Integration', 'HS-Code Mastery', 'Bonded Clearance'] },
-  { id: '02', title: 'CORRIDOR', ar: 'النقل بين المدن', subtitle: 'Linehaul & Trucking', desc: '100% company-owned heavy fleet across KSA & GCC corridors.', icon: Truck, points: ['Owned Fleet', 'GCC Corridors', 'Reefer Capable'] },
+  { id: '02', title: 'CORRIDOR', ar: 'النقل بين المدن', subtitle: 'Linehaul & Trucking', desc: '100% company-owned heavy fleet across all KSA corridors — Central, Western, Eastern, Northern, Southern.', icon: Truck, points: ['Owned Fleet', 'KSA Corridors', 'Reefer Capable'] },
   { id: '03', title: 'NODE', ar: 'التخزين والتجهيز', subtitle: 'Warehousing & Fulfillment', desc: 'ZATCA-compliant bonded storage. <4hr pick-pack-ship cycles.', icon: Package, points: ['Bonded Storage', 'WMS Live', '<4hr Fulfillment'] },
   { id: '04', title: 'DOORSTEP', ar: 'التوصيل للباب', subtitle: 'Last-Mile Delivery', desc: 'OTP-verified handover. Daily COD settlement. Same-day in major cities.', icon: MapPin, points: ['OTP Handover', 'COD Daily', 'Same-Day'] },
   { id: '05', title: 'SECURE', ar: 'اللوجستيات السرية', subtitle: 'Government & Confidential', desc: 'Chain-of-custody tracking. Biometric/OTP clearance. Tamper-proof protocol.', icon: Lock, points: ['Chain of Custody', 'Biometric OTP', 'Tamper-Proof'] },
@@ -40,12 +41,6 @@ const NETWORK_HUBS = [
   { name: 'Al Jouf', type: 'Frontier', x: 48, y: 14 },
   { name: 'Madinah', type: 'Hub', x: 34, y: 48 },
   { name: 'Abha', type: 'Hub', x: 44, y: 78 },
-];
-
-const COMPLIANCE = [
-  'TGA Transport License', 'ZATCA E-Invoicing', 'Fasah Customs Access', 'GOSI Registered Employer',
-  'Municipality Warehouse Permits', '100% Driver Iqama Sponsorship', 'Saudization Compliant',
-  'ISO 9001 Certified', 'Ajeer Workforce Ready', 'Bonded Warehouse License',
 ];
 
 const LEADERS = [
@@ -81,7 +76,6 @@ export default function ExecutiveDeck() {
   const [form, setForm] = useState({ company: '', email: '', volume: '', phone: '' });
   const [live, setLive] = useState(null);
 
-  // Live metrics polling (ready for real API)
   useEffect(() => {
     const stop = startLivePolling((data) => setLive(data), 7000);
     return stop;
@@ -114,6 +108,7 @@ export default function ExecutiveDeck() {
           <div className="hidden md:flex items-center gap-8 font-mono text-[11px] tracking-[0.18em] uppercase text-white/50">
             <a href="#services" className="hover:text-[#E5A93C] transition">Services</a>
             <a href="#network" className="hover:text-[#E5A93C] transition">Network</a>
+            <a href="#expansion" className="hover:text-[#E5A93C] transition">Expansion</a>
             <a href="#roi" className="hover:text-[#E5A93C] transition">ROI</a>
             <a href="#contact" className="hover:text-[#E5A93C] transition">Contact</a>
           </div>
@@ -130,16 +125,14 @@ export default function ExecutiveDeck() {
               Nationwide Last-Mile Delivery & <span className="text-[#E5A93C]">Government-Grade</span> Logistics Infrastructure.
             </h1>
             <p className="mt-6 text-lg text-white/60 max-w-2xl leading-relaxed">
-              Zero CapEx. Zero regulatory exposure. Plug into our 100% owned fleet, licensed infrastructure, and secure distribution corridors.
+              Zero CapEx. Zero regulatory exposure. Plug into our 100% owned fleet, licensed infrastructure, and secure distribution corridors across the Kingdom.
             </p>
 
-            {/* Live AWB */}
             <div className="mt-10 inline-flex items-center gap-3 px-5 py-3 bg-white/[0.04] border border-white/10 rounded-xl backdrop-blur-md">
               <div className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
               <span className="font-mono text-sm text-white/80 tracking-wide">{awbDisplay}</span>
             </div>
 
-            {/* Live KPIs strip */}
             {live?.kpis && (
               <div className="mt-6 flex flex-wrap gap-4 font-mono text-[11px] text-white/50">
                 <span>Today: <strong className="text-white">{live.kpis.parcelsToday.toLocaleString()}</strong></span>
@@ -153,8 +146,8 @@ export default function ExecutiveDeck() {
               <a href="#contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#E5A93C] text-[#0D1117] font-semibold text-sm rounded-lg hover:bg-[#F0C05A] transition-all hover:-translate-y-0.5 shadow-lg shadow-[#E5A93C]/20">
                 Request Proposal <ArrowRight size={16} />
               </a>
-              <a href="#services" className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/15 text-white/80 font-medium text-sm rounded-lg hover:border-[#E5A93C]/40 hover:text-[#E5A93C] transition">
-                Explore Infrastructure
+              <a href="#expansion" className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/15 text-white/80 font-medium text-sm rounded-lg hover:border-[#E5A93C]/40 hover:text-[#E5A93C] transition">
+                KSA Expansion Roadmap
               </a>
             </div>
           </motion.div>
@@ -278,7 +271,10 @@ export default function ExecutiveDeck() {
         </div>
       </section>
 
-      {/* ═══ 5. PEAK + LIVE STATIONS ═══ */}
+      {/* ═══ 5. KSA EXPANSION + REGULATORY LANDSCAPE ═══ */}
+      <KSAExpansionSection />
+
+      {/* ═══ 6. PEAK ═══ */}
       <section className="relative py-24 lg:py-32 border-t border-white/5">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <SectionTag>Peak Performance</SectionTag>
@@ -304,13 +300,12 @@ export default function ExecutiveDeck() {
         </div>
       </section>
 
-      {/* ═══ 6. REFINED ROI SIMULATOR ═══ */}
+      {/* ═══ 7. ROI ═══ */}
       <section id="roi" className="relative py-24 lg:py-32 border-t border-white/5">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <SectionTag>ROI Simulator</SectionTag>
           <h2 className="font-display text-3xl lg:text-5xl font-medium tracking-tight mb-4">In-House vs. <span className="text-[#E5A93C]">Abr Al Awtan.</span></h2>
           <p className="text-white/50 mb-12 max-w-xl">Multi-factor model: fleet, drivers, warehouse, COD, failed attempts, and volume-tiered rates.</p>
-
           <GlassCard className="p-8 lg:p-12">
             <div className="mb-10">
               <div className="flex items-center justify-between mb-4">
@@ -321,7 +316,6 @@ export default function ExecutiveDeck() {
                 className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#E5A93C] [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-[#E5A93C]/40" />
               <div className="flex justify-between mt-2 font-mono text-[10px] text-white/30"><span>5,000</span><span>100,000</span></div>
             </div>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
               <div className="p-5 bg-[#E5A93C]/8 border border-[#E5A93C]/20 rounded-xl">
                 <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#E5A93C]/70 mb-1">CapEx Avoided</div>
@@ -340,7 +334,6 @@ export default function ExecutiveDeck() {
                 <div className="font-display text-2xl font-semibold text-white">{roi.paybackMonths} mo</div>
               </div>
             </div>
-
             <div className="grid md:grid-cols-3 gap-4 text-sm text-white/50">
               <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
                 <div className="font-mono text-[10px] uppercase tracking-wider text-white/30 mb-2">In-House Resources</div>
@@ -362,22 +355,6 @@ export default function ExecutiveDeck() {
         </div>
       </section>
 
-      {/* ═══ 7. COMPLIANCE ═══ */}
-      <section className="relative py-24 lg:py-32 border-t border-white/5">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <SectionTag>Regulatory Stack</SectionTag>
-          <h2 className="font-display text-3xl lg:text-5xl font-medium tracking-tight mb-14">Full compliance. <span className="text-[#E5A93C]">Zero exposure.</span></h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {COMPLIANCE.map((c) => (
-              <GlassCard key={c} className="p-4 flex items-start gap-3">
-                <CheckCircle2 size={16} className="text-[#E5A93C] shrink-0 mt-0.5" />
-                <span className="text-sm text-white/70 leading-snug">{c}</span>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ═══ 8. LEADERSHIP + CONTACT ═══ */}
       <section id="contact" className="relative py-24 lg:py-32 border-t border-white/5">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
@@ -393,7 +370,6 @@ export default function ExecutiveDeck() {
               </GlassCard>
             ))}
           </div>
-
           <GlassCard className="p-8 lg:p-12 max-w-2xl mx-auto">
             <h3 className="font-display text-2xl font-medium mb-2">Request a Tailored Proposal</h3>
             <p className="text-white/40 text-sm mb-8">Enterprise & government inquiries only. Response within 24 hours.</p>
@@ -418,7 +394,7 @@ export default function ExecutiveDeck() {
             <div className="w-8 h-8 border border-[#E5A93C]/40 flex items-center justify-center rounded-md"><span className="font-display text-sm font-bold text-[#E5A93C]">A</span></div>
             <div>
               <div className="font-display text-sm font-semibold">ABR AL AWTAN</div>
-              <div className="font-mono text-[9px] tracking-[0.2em] text-white/30 uppercase">عبر الأوطان · Logistics Infrastructure</div>
+              <div className="font-mono text-[9px] tracking-[0.2em] text-white/30 uppercase">عبر الأوطان · KSA Logistics Infrastructure</div>
             </div>
           </div>
           <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30">© 2026 Abr Al Awtan · TGA Licensed · 100% Saudi Owned</div>
