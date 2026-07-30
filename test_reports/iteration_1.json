@@ -1,0 +1,42 @@
+{
+  "summary": "SEO artifact verification for Abr Al Awtan homepage. All 14 SEO requirements PASS: title, description, OG, Twitter, canonical, hreflang, 2 JSON-LD blocks (MovingCompany + WebSite) both valid JSON, boilerplate div with cities, robots.txt (Cloudflare + our rules + sitemap directive present), sitemap.xml (10 loc entries, valid XML). SPA renders correctly, GrowWithUs section works, no console/page errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "seo_verification": {
+    "title": "Abr Al Awtan — Logistics & Delivery Across Saudi Arabia | Warehousing, Fulfillment, Last-Mile",
+    "description_ok": true,
+    "og_tags_present": ["og:type", "og:site_name", "og:url", "og:title", "og:description", "og:image", "og:image:width", "og:image:height", "og:locale", "og:locale:alternate"],
+    "twitter_tags_present": ["twitter:card", "twitter:title", "twitter:description", "twitter:image"],
+    "canonical": "https://abralawtan.com/",
+    "hreflang": ["en", "ar", "x-default"],
+    "jsonld_blocks": 2,
+    "jsonld_valid_json": true,
+    "movingcompany_schema": {"name": "Abr Al Awtan", "foundingDate": "2016", "founder": "Malik Al Otaibi", "employee": "Jasir Manzoor", "addressCountry": "SA", "telephone_966": true, "offer_count": 8},
+    "boilerplate_div_present": true,
+    "boilerplate_cities": ["Riyadh", "Jeddah", "Dammam"],
+    "robots_txt": {"status": 200, "has_user_agent_all": true, "has_allow": true, "has_sitemap_directive": true, "cloudflare_prepend": true},
+    "sitemap_xml": {"status": 200, "content_type": "application/xml", "loc_count": 10, "well_formed": true, "routes_covered": ["/", "/services", "/fleet", "/about", "/contact", "/careers", "/ship-now", "/track", "/rate-calculator", "/blog"]}
+  },
+  "smoke_test": {
+    "title_rendered": "Abr Al Awtan — Logistics & Delivery Across Saudi Arabia | Warehousing, Fulfillment, Last-Mile",
+    "path-ship_present": true,
+    "path-partner_present": true,
+    "svc-chip-fulfillment_present": true,
+    "chip_toggles_on_click": true,
+    "page_errors": [],
+    "console_errors": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "SEO fixes verified working on preview URL. All meta tags, structured data (JSON-LD MovingCompany + WebSite), robots.txt (Cloudflare-prepended but our block present), sitemap.xml (10 routes, valid XML), and GrowWithUs section functional. Note founder in JSON-LD is an array (not single object) which is Schema.org-valid."
+}

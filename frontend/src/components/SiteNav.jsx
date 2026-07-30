@@ -45,10 +45,7 @@ export default function SiteNav() {
             </div>
             <span className="hidden md:inline">{t('topbar.location') || 'Riyadh · Kingdom of Saudi Arabia'}</span>
           </div>
-          <div className="flex items-center gap-4 text-[#A8C5B5]">
-            <a href="tel:+966555324149" className="hover:text-white transition flex items-center gap-1.5"><Phone size={11} /> +966 555 324 149</a>
-            <button onClick={toggle} data-testid="lang-toggle-topbar" aria-label="Toggle language" className="hidden md:inline-flex items-center gap-1 text-[#B8860B] hover:text-white transition font-mono text-[11px]">
-              <Globe size={11} /> {t('lang.toggle') || (lang === 'en' ? 'العربية' : 'English')}
+
             </button>
           </div>
         </div>

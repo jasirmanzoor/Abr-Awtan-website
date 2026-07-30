@@ -75,7 +75,8 @@ export default function Contact() {
               <div className="flex items-center gap-2 mb-6"><Radio size={16} className="text-[#f5b840]" /><div className="font-mono text-[11px] tracking-[0.28em] uppercase text-[#f5b840] font-semibold">Command Center</div></div>
               <div className="space-y-5">
                 {[
-                  { icon: Phone, label: 'WhatsApp / Phone', value: '+966 555 324 149', href: 'https://wa.me/966555324149' },
+                  { icon: Phone, label: 'WhatsApp (Ops Director)', value: '+966 57 806 1556', href: 'https://wa.me/966578061556' },
+                  { icon: Phone, label: 'Office', value: '+966 555 324 149', href: 'tel:+966555324149' },
                   { icon: Phone, label: 'Direct Line', value: '+966 536 708 287', href: 'tel:+966536708287' },
                   { icon: Mail, label: 'Email', value: 'info@abr-alawtan.com', href: 'mailto:info@abr-alawtan.com' },
                   { icon: MapPin, label: 'Headquarters', value: 'Riyadh, Kingdom of Saudi Arabia' },
@@ -90,7 +91,7 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
-              <a href="https://wa.me/966555324149" target="_blank" rel="noreferrer" className="btn-primary w-full justify-center mt-7"><MessageCircle size={16} /> Chat on WhatsApp</a>
+              <a href="https://wa.me/966578061556" target="_blank" rel="noreferrer" className="btn-primary w-full justify-center mt-7"><MessageCircle size={16} /> Chat on WhatsApp</a>
             </div>
 
             <div className="border border-[#f5b840]/30 bg-[#f5b840]/5 p-6">
